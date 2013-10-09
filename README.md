@@ -12,6 +12,32 @@ My hope is that this will spare developers from having to use the previous metho
  - Delegate pattern (pain to setup, and file bloat)
  - Selectors (Pain to setup)
 
+ 
+
+Usage:
+- Declare property in model
+    @property (nonatomic, strong) CCEventHandler* somethingChanged;
+- initialize property in model
+    _somethingChanged = [[CCEventHanlder alloc] init];
+- Lambda style Hook to EventHandler in ViewController 
+
+// Lambda style hookup event
+## FooViewController
+- (void) hookupToModel {
+
+  [_model.somethingChanged addListener:self andExecute:^(id sender, CCEventArgs *args){
+    // ** START Code that executes upon event goes here
+    
+    
+    // ** END code that executes upon event
+  }];
+
+
+}
+
+
+
+
 
 -Clint Johnson
 cjohnson223@gmail.com
